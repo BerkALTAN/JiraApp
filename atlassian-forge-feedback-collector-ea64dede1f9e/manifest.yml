@@ -1,0 +1,33 @@
+modules:
+  macro:
+    - key: feedback-collector
+      function: main
+      title: Feedback Collector
+      description: Allow users to submit feedback and have tickets created automatically
+      config:
+        function: config
+  function:
+    - key: main
+      handler: index.run
+    - key: config
+      handler: Config.run
+app:
+  id: ari:cloud:ecosystem::app/50a056ce-b3fd-4fbf-987f-a854243696b8
+permissions:
+  scopes:
+    - write:issue:jira
+    - write:comment:jira
+    - write:comment.property:jira
+    - write:attachment:jira
+    - read:issue:jira
+    - read:issue-type:jira
+    - read:project:jira
+    - read:project.property:jira
+    - read:user:jira
+    - read:application-role:jira
+    - read:avatar:jira
+    - read:group:jira
+    - read:issue-type-hierarchy:jira
+    - read:project-category:jira
+    - read:project-version:jira
+    - read:project.component:jira

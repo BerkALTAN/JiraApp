@@ -1,0 +1,26 @@
+{
+    "name": "BEA - MyFirstApp",
+    "description": "Atlassian Connect app",
+    "key": "com.example.myapp",
+    "baseUrl": "https://87a3-91-93-229-151.ngrok.io",
+    "vendor": {
+        "name": "Example, Inc.",
+        "url": "https://example.com"
+    },
+    "authentication": {
+        "type": "none"
+    },
+    "apiVersion": 1,
+    "modules": {
+        "generalPages": [
+            {
+                "url": "/helloworld.html",
+                "key": "hello-world",
+                "location": "system.top.navigation.bar",
+                "name": {
+                    "value": "My First APP"
+                }
+            }
+        ]
+    }
+}

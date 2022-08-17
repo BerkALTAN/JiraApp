@@ -1,0 +1,38 @@
+{
+	"key": "jira-activity",
+	"name": "Jira Project Activity",
+	"description": "A Connect app that displays Jira projects in a table",
+	"vendor": {
+		"name": "Atlassian Developers",
+		"url": "https://developer.atlassian.com/"
+	},
+	"baseUrl": "{{localBaseUrl}}",
+	"links": {
+		"self": "{{localBaseUrl}}/atlassian-connect.json",
+		"homepage": "{{localBaseUrl}}/atlassian-connect.json"
+	},
+	"authentication": {
+		"type": "jwt"
+	},
+	"lifecycle": {
+		"installed": "/installed"
+	},
+	"scopes": [
+		"READ"
+	],
+	"modules": {
+		"generalPages": [
+			{
+				"key": "activity",
+				"location": "system.top.navigation.bar",
+				"name": {
+					"value": "Activity"
+				},
+				"url": "/activity",
+				"conditions": [{
+					"condition": "user_is_logged_in"
+				}]
+			}
+		]
+	}
+}

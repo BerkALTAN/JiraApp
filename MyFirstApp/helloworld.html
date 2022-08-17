@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <link rel="stylesheet" href="https://unpkg.com/@atlaskit/css-reset@2.0.0/dist/bundle.css" media="all">
+        <script src="https://connect-cdn.atl-paas.net/all.js" async></script>
+    </head>
+    <body>
+        <section id="content" class="ac-content">
+            <h1>Hello World</h1>
+        </section>
+    </body>
+    <script>
+        var searchJql = 'resolution = null';
+
+        AP.request({
+        url: '/rest/api/latest/search?jql=' + encodeURIComponent(searchJql),
+        success: function(response) {
+            // convert the string response to JSON
+            response = JSON.parse(response);
+
+            // dump out the response to the console
+            console.log(response);
+        },
+        error: function() {
+            console.log(arguments);
+        }    
+        });
+    </script>
+</html>
