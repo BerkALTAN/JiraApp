@@ -1,10 +1,10 @@
 {
-	"key": "jira-activity",
-	"name": "Jira Custom Report",
+	"key": "com.korozo.customreport",
+	"name": "Korozo Custom Report",
 	"description": "A Connect app that displays Jira projects in a table",
 	"vendor": {
-		"name": "Atlassian Developers",
-		"url": "https://developer.atlassian.com/"
+		"name": "Korozo IT",
+		"url": "https://korozo.com.tr/"
 	},
 	"baseUrl": "{{localBaseUrl}}",
 	"links": {
@@ -14,7 +14,7 @@
 	"authentication": {
 		"type": "jwt"
 	},
-	"lifecycle": {
+	"lifecycle" : {
 		"installed": "/installed"
 	},
 	"scopes": [
@@ -23,7 +23,7 @@
 	"modules": {
 		"generalPages": [
 			{
-				"key": "customReport",
+				"key": "customreport",
 				"location": "system.top.navigation.bar",
 				"name": {
 					"value": "Custom Reporter"

@@ -1,3 +1,5 @@
+var totalItems = [];
+
 const loadPanel = $('#loadPanel').dxLoadPanel({
     shadingColor: 'rgba(0,0,0,0.4)',
     visible: false,
@@ -33,6 +35,9 @@ $('#btnGetData').dxButton({
 });
 
 $('#dgData').dxDataGrid({
+	paging: {
+		pageSize: 100
+	},
     remoteOperations: false,
     searchPanel: {
       visible: true,
@@ -114,29 +119,6 @@ var puSummary = $('#puSummary').dxPopup({
     dragEnabled: false,
     hideOnOutsideClick: true,
     showCloseButton: true,
-    toolbarItems: [{
-		widget: 'dxButton',
-		toolbar: 'bottom',
-		location: 'before',
-		options: {
-			icon: 'add',
-			text: 'Add',
-			onClick() {
-				
-			},
-      	},
-    }, 
-	{
-      	widget: 'dxButton',
-		toolbar: 'bottom',
-		location: 'after',
-		options: {
-        	text: 'Close',
-			onClick() {
-				puSummary.hide();
-			},
-      },
-    }],
 	contentTemplate() {
 		var listView = $('<div />');
 		listView.dxList({
@@ -152,11 +134,16 @@ var puSummary = $('#puSummary').dxPopup({
 				const addedItems = e.addedItems;
 				const removedItems = e.removedItems;
 
-				let totalItems = [];
 				addedItems.forEach(function (r) {
 					totalItems.push({
 						column: r.dataField,
 						summaryType: 'sum'
+					});
+				});
+
+				removedItems.forEach(function (r) {
+					totalItems = jQuery.grep(totalItems, function(value) {
+						return value.column != r.dataField;
 					});
 				});
 
@@ -195,10 +182,22 @@ AP.request('/rest/api/3/field', {
 					dataType: dataType
 				});
 				
-				columns.push({ dataField: "fields." + r.key, caption: r.name, dataType: dataType, checked: false });
+				if (dataType == "number") { 
+					columns.push({ dataField: "fields." + r.key, caption: r.name, dataType: dataType });
+				}
 			}
 		});
 
 		loadPanel.hide();
 	}
 });
+
+AP.request(
+	{
+		url: '/rest/atlassian-connect/1/addons/korozo-it-customReport/properties/firstData',
+		type: 'PUT',
+		data: {"string" : "test-data", "number": 11},
+		success: function (ret) {
+			console.log(ret);
+		}
+	});
