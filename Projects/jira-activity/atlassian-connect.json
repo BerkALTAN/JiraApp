@@ -1,6 +1,6 @@
 {
 	"key": "jira-activity",
-	"name": "Jira Project Activity",
+	"name": "Jira Custom Report",
 	"description": "A Connect app that displays Jira projects in a table",
 	"vendor": {
 		"name": "Atlassian Developers",
@@ -23,10 +23,10 @@
 	"modules": {
 		"generalPages": [
 			{
-				"key": "activity",
+				"key": "customReport",
 				"location": "system.top.navigation.bar",
 				"name": {
-					"value": "Activity"
+					"value": "Custom Reporter"
 				},
 				"url": "/activity",
 				"conditions": [{
